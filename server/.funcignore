@@ -1,0 +1,13 @@
+*.js.map
+*.ts
+.git*
+.vscode
+local.settings.json
+local.settings.example.json
+test
+dev
+dist/test
+dist/dev
+README.md
+POWER-AUTOMATE.md
+tsconfig.json

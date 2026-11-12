@@ -11,6 +11,7 @@
 //   node tools/bundle-template.mjs check  [index.html]   (round-trip proof)
 
 import { readFileSync, writeFileSync } from 'node:fs';
+import { fileURLToPath } from 'node:url';
 
 const OPEN = '<script type="__bundler/template">\n';
 const CLOSE = '\n  </script>';
@@ -39,7 +40,8 @@ function assertSafe(encoded) {
   if (/<\/script/i.test(encoded)) throw new Error('encoded template still contains a closing script tag');
 }
 
-const [cmd, a, b] = process.argv.slice(2);
+const isMain = process.argv[1] === fileURLToPath(import.meta.url);
+const [cmd, a, b] = isMain ? process.argv.slice(2) : [];
 if (cmd === 'decode') {
   const { encoded } = splitBundle(readFileSync(a || 'index.html', 'utf8'));
   writeFileSync(b || 'template.html', decodeTemplate(encoded));

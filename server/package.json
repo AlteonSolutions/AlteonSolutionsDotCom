@@ -1,0 +1,24 @@
+{
+  "name": "alteon-contact-proxy",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Server-side filter between the alteonsolutions.com contact form and the Power Automate flow.",
+  "main": "dist/src/functions/*.js",
+  "scripts": {
+    "build": "tsc",
+    "clean": "rm -rf dist",
+    "test": "tsc && node --test \"dist/test/**/*.test.js\"",
+    "start": "func start",
+    "dev": "tsc && node dist/dev/local-server.js"
+  },
+  "dependencies": {
+    "@azure/functions": "4.17.1"
+  },
+  "devDependencies": {
+    "@types/node": "22.20.5",
+    "typescript": "5.9.3"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
